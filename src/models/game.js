@@ -1,19 +1,32 @@
-const { Schema, mongoose } = require("mongoose");
+const mongoose = require("mongoose");
 
-// const userSchema = new Schema({
-//   email: { type: String, required: true },
-//   password: { type: String, required: true },
-//   bingoboard: { type: [Number], required: false },
-// });
+const gameSchema = new mongoose.Schema(
+  {
+    name: { type: String },
+    host: { type: String, required: true }, // email del host
 
-const gameSchema = new Schema({
-  name: { type: String, required: false },
-  ballots: { type: [Number], required: false },
-  users: { type: [String], required: false },
-  ballotsongame: { type: [Number], required: false },
-  iswinner: { type: Boolean, required: false },
-  winner: { type: String, required: false },
-  ongame: { type: Boolean, default: false, required: false },
-});
+    players: {
+      type: [String], // emails
+      default: [],
+    },
 
-module.exports = mongoose.model("gameSchema", gameSchema);
+    status: {
+      type: String,
+      enum: ["waiting", "started", "finished"],
+      default: "waiting",
+    },
+
+    numbersCalled: {
+      type: [Number],
+      default: [],
+    },
+
+    winner: {
+      type: String,
+      default: null,
+    },
+  },
+  { timestamps: true }
+);
+
+module.exports = mongoose.model("Game", gameSchema);

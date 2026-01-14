@@ -1,3 +1,22 @@
+backend/
+├── src/
+│   ├── app.js
+│   ├── server.js
+│   ├── config/
+│   │   ├── env.js
+│   │   └── db.js
+│   ├── routes/
+│   ├── models/
+│   ├── classes/
+│   ├── middlewares/
+│   └── utils/
+├── .env
+├── package.json
+└── nodemon.json
+
+
+
+
 # elBingoGranBuda-Backend
 
 ![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)
